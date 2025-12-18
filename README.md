@@ -226,15 +226,24 @@ Users should obtain the MIPS PlantDB library independently and configure the pat
 ```
 
 ## Citation
+If you use this pipeline in your research, please cite the following tools and their respective publications:
 
-If you use this pipeline, please cite the following tools:
+1. **EDTA (Extensive de novo TE Annotator)**  
+   Ou S, Chen J, Jiang N, et al. EDTA: automated de novo annotation of transposable elements in eukaryotic genomes. *Genome Biology* (2019).  
+   DOI: [10.1186/s13059-019-1921-0](https://doi.org/10.1186/s13059-019-1921-0)
 
-Ou et al., EDTA: Extensive de novo TE Annotator, Genome Biology
+2. **RepeatModeler2**  
+   Flynn JA, Hubley R, Goubert C, et al. RepeatModeler2 for automated genomic discovery of transposable element families. *PNAS* (2020).  
+   DOI: [10.1073/pnas.1921046117](https://doi.org/10.1073/pnas.1921046117)
 
-Flynn et al., RepeatModeler2, PNAS
+3. **RepeatMasker**  
+   Smit AFA, Hubley R, Green P. RepeatMasker Open-4.0. *2013-2015*.  
+   Available at: [http://www.repeatmasker.org](http://www.repeatmasker.org)
 
-Smit et al., RepeatMasker
+4. **DeepTE**  
+   Yan H, Wang J, Li Y, et al. DeepTE: a deep learning-based tool for transposable element annotation. *Briefings in Bioinformatics* (2021).  
+   DOI: [10.1093/bib/bbab404](https://doi.org/10.1093/bib/bbab404)
 
-Yan et al., DeepTE, Briefings in Bioinformatics
-
-Zhang et al., TEsorter, Bioinformatics
+5. **TEsorter**  
+   Zhang H, Wang X, Wang J, et al. TEsorter: an efficient and flexible tool for classifying transposable elements based on protein domains. *Bioinformatics* (2021).  
+   DOI: [10.1093/bioinformatics/btab708](https://doi.org/10.1093/bioinformatics/btab708)
