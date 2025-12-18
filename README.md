@@ -89,49 +89,56 @@ conda activate TEanno3
 
 The pipeline is designed for PBS-based HPC systems.
 
-Job submission header
+---
+
+### Job submission header
+
+```bash
 #PBS -j oe
 #PBS -q queue_name
 #PBS -V
 #PBS -l nodes=1:ppn=40
+```
 
-Input parameters
+---
+
+### Input parameters
 
 Edit the main shell script before submission:
 
+```bash
 fa=/path/to/genome.fasta
 genome_size=334768680
 name=sample.hapA
 rp_species=Carica_papaya
 cpu=40
+```
 
+---
 
-Parameter description:
+### Parameter description:
 
-fa → genome FASTA file
+- fa → genome FASTA file
+- genome_size → total genome size (bp), required for TEclassify
+- name → sample prefix
+- rp_species → RepeatMasker species parameter
+- cpu → number of CPU threads
 
-genome_size → total genome size (bp), required for TEclassify
+---
 
-name → sample prefix
-
-rp_species → RepeatMasker species parameter
-
-cpu → number of CPU threads
-
-Running the pipeline
+### Running the pipeline
 
 Submit the job using:
 
+```bash
 qsub TE-pipeline.sh
-
-
+```
 The pipeline runs sequentially and automatically switches conda environments as required.
 
-Directory structure
+### Directory structure
 
 Typical output structure:
 ```md
-```text
 .
 ├── 00.EDTA/
 │   ├── genome.fasta.mod.EDTA.raw/
@@ -156,7 +163,9 @@ Typical output structure:
 │   └── TEsorter.log
 │
 └── formatted.gff
-Output files
+```
+
+## Output files
 
 Key output files include:
 
