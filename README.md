@@ -231,12 +231,16 @@ If you use this pipeline, please cite the following tools:
 
 Ou S, Su W, Liao Y, et al.  
 EDTA: Extensive de novo TE Annotator. *Genome Biology*.
+
 Flynn JM, Hubley R, Goubert C, et al.  
 RepeatModeler2 for automated genomic discovery of transposable element families. *PNAS*.
+
 Smit AFA, Hubley R, Green P.  
 RepeatMasker Open-4.0.
+
 Yan H, Bombarely A, Li S, et al.  
 DeepTE: an accurate and fast method for transposable element classification. *Briefings in Bioinformatics*.
+
 Zhang RG, Wang Y, et al.  
 TEsorter: lineage-level classification of transposable elements using conserved protein domains. *Bioinformatics*.
 
