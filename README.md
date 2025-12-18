@@ -20,7 +20,7 @@ The goal is to maximize sensitivity for TE discovery while improving classificat
 
 ## Workflow
 
-The TE-annotation-pipeline consists of four major stages:
+The TE-pipeline consists of four major stages:
 
 ### 1. Initial TE annotation
 - EDTA (structure-based + curated library)
@@ -66,20 +66,20 @@ conda env create -f Installation/TEanno1.yaml
 conda env create -f Installation/TEanno2.yaml
 conda env create -f Installation/TEanno3.yaml
 ```
-Activate environments as needed during execution.
+During pipeline execution, different environments are activated automatically.
+If manual activation is required:
 
 ```bash
-conda activate TEanno1
-conda activate TEanno2
-conda activate TEanno3
+conda activate TEanno1   # EDTA + RepeatMasker
+conda activate TEanno2   # DeepTE
+conda activate TEanno3   # TEsorter
 ```
-- TEanno1 → EDTA + RepeatMasker environment
-- TEanno2 → DeepTE environment
-- TEanno3 → TEsorter environment
+
 
 ## Usage on HPC
 
 The pipeline is designed for PBS-based HPC systems.
+Minor modifications may be required for other schedulers (e.g. SLURM).
 
 ### Job submission header
 
@@ -122,7 +122,7 @@ The pipeline runs sequentially and automatically switches conda environments as 
 ### Directory structure
 
 Typical output structure:
-```md
+```text
 .
 ├── 00.EDTA/
 │   ├── genome.fasta.mod.EDTA.raw/
