@@ -99,12 +99,12 @@ grep -v '*' ../${name}.filtered.out > ../${name}.filtered.f2.out
 sed 's/^[ \t]*//' ../${name}.filtered.f2.out | sed 's/ \+/\t/g' > test.out
 
 # Convert out file to BED format
-perl /public/home/yuejingjing/tyh/protocol/rpanno-stat/rmout_to_bed.pl -input test.out -bed test.bed
+perl Scripts/rmout_to_bed.pl -input test.out -bed test.bed
 # Extract unknown TE sequences
 bedtools getfasta -fi ../../${name}.fa -bed test.bed -s > unknown.fa
 
 # Generate tandem.all.bed to check tandem repeats
-perl /public/home/yuejingjing/tyh/protocol/rpanno-stat/tandemRepeatFinder.pl -i ../../${name}.fa
+perl Scripts/tandemRepeatFinder.pl -i ../../${name}.fa
 
 # Activate DeepTE environment
 source ~/.bashrc
@@ -117,18 +117,18 @@ python /public/home/yuejingjing/biosofts/DeepTE-master/DeepTE.py -d working_dir 
 # Modify output format
 sed  's/(+)__/#/g' opt_DeepTE.fasta > opt_DeepTE.fix.fa
 # Rename transposons for TEclassify.pl recognition
-python3  /public/home/yuejingjing/tyh/protocol/rpanno-stat/merge_deepTE.py -i opt_DeepTE.fix.fa -o DeepTE.fa
-python /public/home/yuejingjing/tyh/protocol/rpanno-stat/update_annotation.py -inf DeepTE.fa -i test.out -o update.out
+python3  Scripts/merge_deepTE.py -i opt_DeepTE.fix.fa -o DeepTE.fa
+python Scripts/update_annotation.py -inf DeepTE.fa -i test.out -o update.out
 
 # Generate required file for TEclassify-2.0.pl
 perl Scripts/all-types-stat.pl -input update.out -output tmp.TE.out
 
 # Extract remaining unknowns after DeepTE for further statistics
-perl /public/home/yuejingjing/tyh/protocol/rpanno-stat/rmout_to_bed.pl -input update.out -bed final-unknown.bed
+perl Scripts/rmout_to_bed.pl -input update.out -bed final-unknown.bed
 bedtools getfasta -fi ../../${name}.fa  -bed final-unknown.bed -s > final.unknown.fa
 
 # Run TEclassify-2.0.pl
-perl /public/home/yuejingjing/tyh/protocol/rpanno-stat/TEclassify-2.0.pl -i update.out -u final.unknown.fa -g ${genome_size} > results.txt
+perl Scripts/TEclassify-2.0.pl -i update.out -u final.unknown.fa -g ${genome_size} > results.txt
 # Convert update.out to BED format for subsequent methylation analysis
 source ~/.bashrc
 source activate EDTA
