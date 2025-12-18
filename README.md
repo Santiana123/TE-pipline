@@ -153,45 +153,32 @@ Typical output structure:
 
 Key output files include:
 
-GFF files
+### GFF files
+- `formatted.gff` → final standardized TE annotation  
+- `update.out.gff` → DeepTE-updated annotations  
 
-formatted.gff → final standardized TE annotation
+### Masked genomes
+- `*.sm.fa` → soft-masked genome  
+- `*.rm.fa` → hard-masked genome  
 
-update.out.gff → DeepTE-updated annotations
+### Statistics
+- `results.txt` → TEclassify genome-wide TE composition  
 
-Masked genomes
+### Intermediate files
+- RepeatMasker output files (`*.out`, `*.gff`, `*.bed`)  
+- Protein-domain–based annotations from **TEsorter**
 
-*.sm.fa → soft-masked genome
-
-*.rm.fa → hard-masked genome
-
-Statistics
-
-results.txt → TEclassify genome-wide TE composition
-
-Intermediate files
-
-RepeatMasker .out, .gff, .bed
-
-Domain-based annotation from TEsorter
-
-TE classification standard
+## TE classification standard
 
 The pipeline standardizes TE names into a unified hierarchical format, for example:
 
-Class_I/LTR/Ty3_gypsy
-
-Class_I/LTR/Ty1_copia
-
-Class_I/LINE
-
-Class_I/SINE
-
-Class_II/subclass_1/TIR/hAT
-
-Class_II/subclass_1/TIR/MuDR/Mutator
-
-Class_II/subclass_2/Helitron
+- `Class_I/LTR/Ty3_gypsy`
+- `Class_I/LTR/Ty1_copia`
+- `Class_I/LINE`
+- `Class_I/SINE`
+- `Class_II/subclass_1/TIR/hAT`
+- `Class_II/subclass_1/TIR/MuDR/Mutator`
+- `Class_II/subclass_2/Helitron`
 
 Non-TE annotations (e.g. tRNA, rRNA, simple repeats) are filtered out from the final results.
 
@@ -207,8 +194,8 @@ After installation, users must manually configure these tools following their of
 - Verifying RepeatModeler database and executable paths
 
 Please refer to the official manuals for detailed setup instructions:
-- RepeatMasker: http://www.repeatmasker.org
-- RepeatModeler: http://www.repeatmasker.org/RepeatModeler/
+- RepeatMasker: https://github.com/Dfam-consortium/RepeatMasker
+- RepeatModeler: https://github.com/Dfam-consortium/RepeatModeler
 
 ---
 
