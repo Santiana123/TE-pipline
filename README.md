@@ -229,7 +229,11 @@ Users should obtain the MIPS PlantDB library independently and configure the pat
 If you use this pipeline, please cite the following tools:
 
 Ou et al., EDTA: Extensive de novo TE Annotator, Genome Biology
+
 Flynn et al., RepeatModeler2, PNAS
+
 Smit et al., RepeatMasker
+
 Yan et al., DeepTE, Briefings in Bioinformatics
+
 Zhang et al., TEsorter, Bioinformatics
