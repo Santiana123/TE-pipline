@@ -1,2 +1,2 @@
 # TE-pipline
-Tandem repeats were identified using Tandem Repeat Finder v4.09.1. For dispersed repeats, three complementary strategies were combined: de novo prediction, homology-based search, and convolutional neural network (CNN)-based classification. Protein-coding gene annotation in the ZB genome was performed using a combination of homology-based, de novo, and transcriptome-based approaches (both reference-guided and reference-free)
+Tandem repeats were identified using Tandem Repeat Finder v4.09.1. For dispersed repeats, three complementary strategies were combined: de novo prediction, homology-based search, and convolutional neural network (CNN)-based classification. 
