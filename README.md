@@ -1,2 +1,230 @@
-# TE-pipline
-Tandem repeats were identified using Tandem Repeat Finder v4.09.1. For dispersed repeats, three complementary strategies were combined: de novo prediction, homology-based search, and convolutional neural network (CNN)-based classification. 
+## TE-annotation-pipeline
+
+TE-annotation-pipeline is an integrated and automated workflow for genome-wide transposable element (TE) annotation in plant genomes.  
+The pipeline combines **EDTA**, **RepeatModeler**, **RepeatMasker**, **DeepTE**, and **TEsorter** to generate a high-confidence, well-classified TE annotation set, suitable for downstream genome annotation, methylation analysis, and comparative genomics.
+
+This workflow is designed for **HPC environments** and supports large, complex genomes.
+
+---
+
+## Overview
+
+The pipeline performs TE annotation in multiple complementary stages:
+
+- Structure-based and homology-based TE annotation using **EDTA**
+- De novo repeat discovery using **RepeatModeler**
+- Genome-wide repeat masking using **RepeatMasker**
+- Unknown TE re-annotation using **DeepTE** and **TEclassify**
+- Protein-domain–based refinement using **TEsorter**
+- Standardization of TE classification and final GFF generation
+
+The goal is to maximize sensitivity for TE discovery while improving classification accuracy, especially for previously unclassified elements.
+
+---
+
+## Workflow
+
+The TE-annotation-pipeline consists of four major stages:
+
+### 1. Initial TE annotation
+- EDTA (structure-based + curated library)
+- RepeatModeler (de novo library construction)
+- RepeatMasker (homology-based annotation)
+
+### 2. Library integration and genome masking
+- Merge EDTA and RepeatModeler libraries
+- Generate soft-masked and hard-masked genomes
+- Produce combined GFF and BED annotations
+
+### 3. Re-annotation of unknown TEs
+- Extract unknown TE sequences
+- DeepTE classification
+- TEclassify-based genome-wide statistics
+
+### 4. Protein-domain validation and refinement
+- TEsorter domain-based classification
+- Resolve conflicts and standardize TE nomenclature
+
+---
+
+## Installation
+
+### Required software
+
+The pipeline relies on the following tools:
+
+- EDTA
+- RepeatModeler
+- RepeatMasker
+- DeepTE
+- TEsorter
+- BEDTools
+- Perl (with standard bioinformatics modules)
+- Python (≥ 3.7)
+
+It is recommended to manage dependencies using **conda environments**.
+
+---
+
+### Conda environments
+All required conda environments are provided in the `Installation/` directory as YAML files.
+
+```bash
+conda env create -f Installation/TEanno1.yaml
+conda env create -f Installation/TEanno2.yaml
+conda env create -f Installation/TEanno3.yaml
+```
+Activate environments as needed during execution.
+
+```bash
+conda activate TEanno1
+conda activate TEanno2
+conda activate TEanno3
+```
+
+## Usage on HPC
+
+The pipeline is designed for PBS-based HPC systems.
+
+Job submission header
+#PBS -j oe
+#PBS -q queue_name
+#PBS -V
+#PBS -l nodes=1:ppn=40
+
+Input parameters
+
+Edit the main shell script before submission:
+
+fa=/path/to/genome.fasta
+genome_size=334768680
+name=sample.hapA
+rp_species=Carica_papaya
+cpu=40
+
+
+Parameter description:
+
+fa → genome FASTA file
+
+genome_size → total genome size (bp), required for TEclassify
+
+name → sample prefix
+
+rp_species → RepeatMasker species parameter
+
+cpu → number of CPU threads
+
+Running the pipeline
+
+Submit the job using:
+
+qsub TE-pipeline.sh
+
+
+The pipeline runs sequentially and automatically switches conda environments as required.
+
+Directory structure
+
+Typical output structure:
+
+.
+├── 00.EDTA/
+│   ├── genome.fasta.mod.EDTA.raw/
+│   └── EDTA annotation results
+│
+├── 01.rpanno/
+│   ├── rmout_sample/
+│   ├── rmout_denovo_sample/
+│   ├── rmout_combine_sample/
+│   │   ├── sample.out
+│   │   ├── sample.out.gff
+│   │   ├── sample.sm.fa
+│   │   └── sample.rm.fa
+│
+├── Unknown_TE/
+│   ├── DeepTE results
+│   ├── TEclassify results
+│   └── results.txt
+│
+├── TEsorter/
+│   ├── *.dom.gff3
+│   └── TEsorter.log
+│
+└── formatted.gff
+
+Output files
+
+Key output files include:
+
+GFF files
+
+formatted.gff → final standardized TE annotation
+
+update.out.gff → DeepTE-updated annotations
+
+Masked genomes
+
+*.sm.fa → soft-masked genome
+
+*.rm.fa → hard-masked genome
+
+Statistics
+
+results.txt → TEclassify genome-wide TE composition
+
+Intermediate files
+
+RepeatMasker .out, .gff, .bed
+
+Domain-based annotation from TEsorter
+
+TE classification standard
+
+The pipeline standardizes TE names into a unified hierarchical format, for example:
+
+Class_I/LTR/Ty3_gypsy
+
+Class_I/LTR/Ty1_copia
+
+Class_I/LINE
+
+Class_I/SINE
+
+Class_II/subclass_1/TIR/hAT
+
+Class_II/subclass_1/TIR/MuDR/Mutator
+
+Class_II/subclass_2/Helitron
+
+Non-TE annotations (e.g. tRNA, rRNA, simple repeats) are filtered out from the final results.
+
+Notes
+
+This pipeline is optimized for plant genomes, but can be adapted to other eukaryotes.
+
+Genome size must be provided accurately for TEclassify statistics.
+
+For detailed parameter explanations, please refer to the official documentation of:
+
+EDTA
+
+RepeatMasker
+
+DeepTE
+
+TEsorter
+
+Citation
+
+If you use this pipeline, please cite the following tools:
+
+Ou et al., EDTA: Extensive de novo TE Annotator, Genome Biology
+
+Flynn et al., RepeatModeler2, PNAS
+
+Smit et al., RepeatMasker
+
+Yan et al., DeepTE, Briefings in Bioinformatics
+
+Zhang et al., TEsorter, Bioinformatics
