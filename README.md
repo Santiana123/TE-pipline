@@ -131,16 +131,15 @@ Typical output structure:
 ├── 01.rpanno/
 │   ├── rmout_sample/
 │   ├── rmout_denovo_sample/
-│   ├── rmout_combine_sample/
-│   │   ├── sample.out
-│   │   ├── sample.out.gff
-│   │   ├── sample.sm.fa
-│   │   └── sample.rm.fa
-│
-├── Unknown_TE/
-│   ├── DeepTE results
-│   ├── TEclassify results
-│   └── results.txt
+│   └── rmout_combine_sample/
+│       ├── sample.out
+│       ├── sample.out.gff
+│       ├── sample.sm.fa
+│       ├── sample.rm.fa
+│       └── Unknown_TE/
+│           ├── DeepTE results
+│           ├── TEclassify results
+│           └── results.txt
 │
 ├── TEsorter/
 │   ├── *.dom.gff3
