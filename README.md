@@ -1,6 +1,6 @@
 ## TE-pipeline
 
-TE-annotation-pipeline is an integrated and automated workflow for genome-wide transposable element (TE) annotation in plant genomes.  
+TE-pipeline is an integrated and automated workflow for genome-wide transposable element (TE) annotation in plant genomes.  
 The pipeline combines **EDTA**, **RepeatModeler**, **RepeatMasker**, **DeepTE**, and **TEsorter** to generate a high-confidence, well-classified TE annotation set, suitable for downstream genome annotation, methylation analysis, and comparative genomics.
 
 This workflow is designed for **HPC environments** and supports large, complex genomes.
