@@ -229,21 +229,22 @@ Users should obtain the MIPS PlantDB library independently and configure the pat
 If you use this pipeline in your research, please cite the following tools and their respective publications:
 
 1. **EDTA (Extensive de novo TE Annotator)**  
-   Ou S, Chen J, Jiang N, et al. EDTA: automated de novo annotation of transposable elements in eukaryotic genomes. *Genome Biology* (2019).  
-   DOI: [10.1186/s13059-019-1921-0](https://doi.org/10.1186/s13059-019-1921-0)
+   Ou S, Su W, Liao Y, et al. Benchmarking transposable element annotation methods for creation of a streamlined, comprehensive pipeline. *Genome Biology* (2019).  
+   DOI: [10.1186/s13059-019-1905-y](https://doi.org/10.1186/s13059-019-1905-y)
 
 2. **RepeatModeler2**  
-   Flynn JA, Hubley R, Goubert C, et al. RepeatModeler2 for automated genomic discovery of transposable element families. *PNAS* (2020).  
+   Flynn JM, Hubley R, Goubert C, et al. RepeatModeler2 for automated genomic discovery of transposable element families. *PNAS* (2020).  
    DOI: [10.1073/pnas.1921046117](https://doi.org/10.1073/pnas.1921046117)
 
 3. **RepeatMasker**  
-   Smit AFA, Hubley R, Green P. RepeatMasker Open-4.0. *2013-2015*.  
+   Smit AFA, Hubley R, Green P. RepeatMasker Open-4.0. (2013–2015).  
    Available at: [http://www.repeatmasker.org](http://www.repeatmasker.org)
 
 4. **DeepTE**  
-   Yan H, Wang J, Li Y, et al. DeepTE: a deep learning-based tool for transposable element annotation. *Briefings in Bioinformatics* (2021).  
-   DOI: [10.1093/bib/bbab404](https://doi.org/10.1093/bib/bbab404)
+   Yan H, Bombarely A, Li S. DeepTE: a computational method for de novo classification of transposons with convolutional neural network. *Bioinformatics* (2020).  
+   DOI: [10.1093/bioinformatics/btaa519](https://doi.org/10.1093/bioinformatics/btaa519)
 
 5. **TEsorter**  
-   Zhang H, Wang X, Wang J, et al. TEsorter: an efficient and flexible tool for classifying transposable elements based on protein domains. *Bioinformatics* (2021).  
-   DOI: [10.1093/bioinformatics/btab708](https://doi.org/10.1093/bioinformatics/btab708)
+   Zhang R-G, Wang Z-X, Ou S, Li G-Y. TEsorter: an accurate and fast method to classify LTR-retrotransposons in plants. *Horticulture Research* (2022).  
+   DOI: [10.1093/hr/uhac017](https://doi.org/10.1093/hr/uhac017)
+
