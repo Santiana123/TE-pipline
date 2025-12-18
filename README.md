@@ -1,4 +1,4 @@
-## TE-annotation-pipeline
+## TE-pipeline
 
 TE-annotation-pipeline is an integrated and automated workflow for genome-wide transposable element (TE) annotation in plant genomes.  
 The pipeline combines **EDTA**, **RepeatModeler**, **RepeatMasker**, **DeepTE**, and **TEsorter** to generate a high-confidence, well-classified TE annotation set, suitable for downstream genome annotation, methylation analysis, and comparative genomics.
@@ -81,6 +81,9 @@ conda activate TEanno1
 conda activate TEanno2
 conda activate TEanno3
 ```
+- TEanno1 → EDTA + RepeatMasker environment
+- TEanno2 → DeepTE environment
+- TEanno3 → TEsorter environment
 
 ## Usage on HPC
 
@@ -127,7 +130,8 @@ The pipeline runs sequentially and automatically switches conda environments as 
 Directory structure
 
 Typical output structure:
-
+```md
+```text
 .
 ├── 00.EDTA/
 │   ├── genome.fasta.mod.EDTA.raw/
@@ -152,7 +156,6 @@ Typical output structure:
 │   └── TEsorter.log
 │
 └── formatted.gff
-
 Output files
 
 Key output files include:
@@ -199,23 +202,54 @@ Class_II/subclass_2/Helitron
 
 Non-TE annotations (e.g. tRNA, rRNA, simple repeats) are filtered out from the final results.
 
-Notes
+## Notes
 
-This pipeline is optimized for plant genomes, but can be adapted to other eukaryotes.
+### RepeatMasker and RepeatModeler configuration
 
-Genome size must be provided accurately for TEclassify statistics.
+RepeatMasker and RepeatModeler are **not fully configured by conda alone**.  
+After installation, users must manually configure these tools following their official documentation, including:
 
-For detailed parameter explanations, please refer to the official documentation of:
+- Setting the correct paths to alignment engines (e.g. RMBlast)
+- Configuring RepeatMasker with required dependencies
+- Verifying RepeatModeler database and executable paths
 
-EDTA
+Please refer to the official manuals for detailed setup instructions:
+- RepeatMasker: http://www.repeatmasker.org
+- RepeatModeler: http://www.repeatmasker.org/RepeatModeler/
 
-RepeatMasker
+---
 
-DeepTE
+### Dfam database
 
-TEsorter
+RepeatMasker requires a properly configured **Dfam database**, which must be downloaded and indexed manually.
 
-Citation
+The pipeline was tested using **Dfam release 3.9**.  
+Users should download the following files and configure them according to RepeatMasker guidelines:
+
+- https://www.dfam.org/releases/Dfam_3.9/families/FamDB/dfam39_full.0.h5.gz  
+- https://www.dfam.org/releases/Dfam_3.9/families/FamDB/dfam39_full.5.h5.gz  
+
+After downloading, make sure the Dfam database is correctly linked and recognized by RepeatMasker.
+
+---
+
+### MIPS PlantDB (curated repeat library)
+
+This pipeline uses the **MIPS PlantDB repeat library** as a curated TE reference database for EDTA.
+
+MIPSPlantsDB is a comprehensive plant genome resource for integrative and comparative genomics:
+
+Spannagl M, Noubibou O, Haase D, et al.  
+*MIPSPlantsDB – plant database resource for integrative and comparative plant genome research.*  
+Nucleic Acids Research, 2007, 35(Database issue).  
+PMID: 17202173
+
+Users should obtain the MIPS PlantDB library independently and configure the path in the EDTA step:
+
+```bash
+--curatedlib /path/to/MIPS_PlantDB_library.fa
+
+## Citation
 
 If you use this pipeline, please cite the following tools:
 
