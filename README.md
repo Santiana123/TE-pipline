@@ -5,8 +5,6 @@ The pipeline combines **EDTA**, **RepeatModeler**, **RepeatMasker**, **DeepTE**,
 
 This workflow is designed for **HPC environments** and supports large, complex genomes.
 
----
-
 ## Overview
 
 The pipeline performs TE annotation in multiple complementary stages:
@@ -19,8 +17,6 @@ The pipeline performs TE annotation in multiple complementary stages:
 - Standardization of TE classification and final GFF generation
 
 The goal is to maximize sensitivity for TE discovery while improving classification accuracy, especially for previously unclassified elements.
-
----
 
 ## Workflow
 
@@ -45,8 +41,6 @@ The TE-annotation-pipeline consists of four major stages:
 - TEsorter domain-based classification
 - Resolve conflicts and standardize TE nomenclature
 
----
-
 ## Installation
 
 ### Required software
@@ -63,8 +57,6 @@ The pipeline relies on the following tools:
 - Python (≥ 3.7)
 
 It is recommended to manage dependencies using **conda environments**.
-
----
 
 ### Conda environments
 All required conda environments are provided in the `Installation/` directory as YAML files.
@@ -89,8 +81,6 @@ conda activate TEanno3
 
 The pipeline is designed for PBS-based HPC systems.
 
----
-
 ### Job submission header
 
 ```bash
@@ -99,8 +89,6 @@ The pipeline is designed for PBS-based HPC systems.
 #PBS -V
 #PBS -l nodes=1:ppn=40
 ```
-
----
 
 ### Input parameters
 
@@ -114,8 +102,6 @@ rp_species=Carica_papaya
 cpu=40
 ```
 
----
-
 ### Parameter description:
 
 - fa → genome FASTA file
@@ -123,8 +109,6 @@ cpu=40
 - name → sample prefix
 - rp_species → RepeatMasker species parameter
 - cpu → number of CPU threads
-
----
 
 ### Running the pipeline
 
@@ -257,6 +241,7 @@ Users should obtain the MIPS PlantDB library independently and configure the pat
 
 ```bash
 --curatedlib /path/to/MIPS_PlantDB_library.fa
+```
 
 ## Citation
 
