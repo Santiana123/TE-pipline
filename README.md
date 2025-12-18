@@ -196,8 +196,6 @@ Please refer to the official manuals for detailed setup instructions:
 - RepeatMasker: https://github.com/Dfam-consortium/RepeatMasker
 - RepeatModeler: https://github.com/Dfam-consortium/RepeatModeler
 
----
-
 ### Dfam database
 
 RepeatMasker requires a properly configured **Dfam database**, which must be downloaded and indexed manually.
@@ -209,8 +207,6 @@ Users should download the following files and configure them according to Repeat
 - https://www.dfam.org/releases/Dfam_3.9/families/FamDB/dfam39_full.5.h5.gz  
 
 After downloading, make sure the Dfam database is correctly linked and recognized by RepeatMasker.
-
----
 
 ### MIPS PlantDB (curated repeat library)
 
@@ -233,12 +229,14 @@ Users should obtain the MIPS PlantDB library independently and configure the pat
 
 If you use this pipeline, please cite the following tools:
 
-Ou et al., EDTA: Extensive de novo TE Annotator, Genome Biology
+Ou S, Su W, Liao Y, et al.  
+EDTA: Extensive de novo TE Annotator. *Genome Biology*.
+Flynn JM, Hubley R, Goubert C, et al.  
+RepeatModeler2 for automated genomic discovery of transposable element families. *PNAS*.
+Smit AFA, Hubley R, Green P.  
+RepeatMasker Open-4.0.
+Yan H, Bombarely A, Li S, et al.  
+DeepTE: an accurate and fast method for transposable element classification. *Briefings in Bioinformatics*.
+Zhang RG, Wang Y, et al.  
+TEsorter: lineage-level classification of transposable elements using conserved protein domains. *Bioinformatics*.
 
-Flynn et al., RepeatModeler2, PNAS
-
-Smit et al., RepeatMasker
-
-Yan et al., DeepTE, Briefings in Bioinformatics
-
-Zhang et al., TEsorter, Bioinformatics
