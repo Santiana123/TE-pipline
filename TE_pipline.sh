@@ -14,7 +14,7 @@ rp_species=Carica_papaya
 cpu=40
 
 # Activate EDTA environment
-source activate EDTA
+source activate TEanno1
 
 # Create EDTA output directory if not exists
 if [ -d 00.EDTA ]
@@ -30,7 +30,7 @@ cd ./00.EDTA
 ln -s ${fa} genome.fasta
 #########EDTA annotation
 EDTA.pl --genome genome.fasta --species others --sensitive 0 --anno 1 --overwrite 0 \
-        --threads ${cpu} --curatedlib /public/home/yuejingjing/tyh/db/MIPS-database/mipsREdat_9.3p_ALL_library2.fix.fa
+        --threads ${cpu} --curatedlib mipsREdat_9.3p_ALL_library2.fix.fa
 cd ../
 
 #########RepeatMasker annotation
@@ -108,7 +108,7 @@ perl Scripts/tandemRepeatFinder.pl -i ../../${name}.fa
 
 # Activate DeepTE environment
 source ~/.bashrc
-source activate DeepTE
+source activate TEanno2
 
 # Annotate unknown TEs using DeepTE
 python /public/home/yuejingjing/biosofts/DeepTE-master/DeepTE.py -d working_dir \
@@ -131,7 +131,7 @@ bedtools getfasta -fi ../../${name}.fa  -bed final-unknown.bed -s > final.unknow
 perl Scripts/TEclassify-2.0.pl -i update.out -u final.unknown.fa -g ${genome_size} > results.txt
 # Convert update.out to BED format for subsequent methylation analysis
 source ~/.bashrc
-source activate EDTA
+source activate TEanno1
 ~/mambaforge/envs/EDTA/share/RepeatMasker/util/RM2Bed.py update.out
 sort -k1,1V -s update_rm.bed > update_rm.sort.bed
 awk 'BEGIN{OFS="\t"} {tmp=$10; $10=$11; $11=tmp; print}' update.out > update.out2
@@ -143,7 +143,7 @@ ln -s 01.rpanno/rmout_combine_${name}/Unknown_TE/results.txt
 mkdir TEsorter
 cd TEsorter
 source ~/.bashrc
-conda activate TEsorter
+conda activate TEanno3
 TEsorter ${fa} -genome -p ${cpu} -db rexdb-plant -prob 0.9 -cov 30 -eval 1e-5 -score 1 1>2 2>TEsorter.log
 ln -s ../update.out.gff
 
